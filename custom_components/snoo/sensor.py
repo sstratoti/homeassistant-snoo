@@ -49,14 +49,13 @@ class SnooStateSensor(Entity):
         # level:
         #   When awake or asleep, this is 0. When soothing,
         #   this is the soothing level between 1 and 4.
-        # sleep_start_time:
-        #   When awake, this is "". When asleep or soothing, this is the
-        #   timestamp of when this sleep session started. That is, when
-        #   we transitioned from awake to asleep. Transitions between
-        #   soothing levels are ignored.
+        # session_start_time::
+        #   Contains the time the current wake or sleep session started.
+        #   Note that only changes to or from awake are tracked here;
+        #   transitions between soothing and sleep phases are ignored.
         self._attributes = {
             "level": 0,
-            "sleep_start_time": ""
+            "session_start_time": ""
         }
 
     def update(self):
@@ -64,12 +63,10 @@ class SnooStateSensor(Entity):
         session = self._client.get_current_session()
         if session["end_time"]:
             self._attributes["level"] = 0
-            self._attributes["sleep_start_time"] = ""
+            self._attributes["session_start_time"] = session["end_time"]
             self._state = SnooState.AWAKE
         elif session["level"] in ["BASELINE", "WEANING_BASELINE"]:
-            # TODO: What should we doo about SnooState.NONE here?
-            if self._state is SnooState.AWAKE:
-                self._attributes["sleep_start_time"] = session["start_time"]
+            self._attributes["session_start_time"] = session["start_time"]
             self._attributes["level"] = 0
             self._state = SnooState.ASLEEP
         elif session["level"] == "LEVEL1":
