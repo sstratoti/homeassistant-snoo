@@ -1,0 +1,14 @@
+{
+    "config": {
+        "title": "Snoo Smart Bassinet",
+        "step": {
+            "user": {
+                "title": "Happiest Baby Account credentials",
+                "data": {
+                    "username": "Username",
+                    "password": "Password"
+                }
+            }
+        }
+    }
+}

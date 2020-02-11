@@ -1,0 +1,16 @@
+{
+    "domain": "snoo",
+    "name": "Happiest Baby Snoo Smart Bassinet",
+    "config_flow": true,
+    "documentation": "https://bitbucket.org/pjhardy/homeassistant-snoo",
+    "requirements": [
+        "snoo==0.3.0"
+    ],
+    "ssdp": [],
+    "zeroconf": [],
+    "homekit": {},
+    "dependencies": [],
+    "codeowners": [
+        "@pjhardy"
+    ]
+}
