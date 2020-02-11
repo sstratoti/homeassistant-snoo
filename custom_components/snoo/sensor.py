@@ -34,7 +34,7 @@ class SnooStateSensor(Entity):
     @property
     def state(self):
         """Return the state of the sensor."""
-        return self._state.value[0]
+        return self._state.value
 
     def update(self):
         """Fetch new state data for the sensor."""
@@ -46,10 +46,9 @@ class SnooStateSensor(Entity):
         else:
             self._state = SnooState.SOOTHING
 
-        return self._state.value[0]
 
 class SnooState(Enum):
-    NONE = "None",
-    AWAKE = "Awake",
-    ASLEEP = "Asleep",
+    NONE = "None"
+    AWAKE = "Awake"
+    ASLEEP = "Asleep"
     SOOTHING = "Soothing"
