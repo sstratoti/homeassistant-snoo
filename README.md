@@ -1,5 +1,10 @@
 # homeassistant-snoo
 
+This is a fork of the [original homeassistant-snoo project][4] by 
+Peter Hardy. I wanted to make some adjustments to the code to make 
+it available in HACS, and also fix a bug with the way the config is 
+stored/retrieved in homeassistant.
+
 This is a [Home Assistant][1] custom component to retreive the status of
 a [SNOO Smart Bassinet][2]. It creates a sensor showing the current
 session status (awake, asleep or soothing), as well as the current soothe
@@ -7,6 +12,7 @@ level when soothing.
 
 [1]: https://www.home-assistant.ai/
 [2]: https://www.happiestbaby.com/products/snoo-smart-bassinet
+[4]: https://bitbucket.org/pjhardy/homeassistant-snoo/src/master/
 
 This component is made possible by the [`snoo` Python module][3]. Note
 that it is only possible to read the current status. Sending commands is
